@@ -2,17 +2,38 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Download, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Download, Github, Linkedin, Mail } from "lucide-react"
 
 export function Hero() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [displayedText, setDisplayedText] = useState("")
+  const [showCursor, setShowCursor] = useState(true)
+
+  const descriptionText = `I  build accessible, pixel-perfect digital experiences for the web. Passionate about crafting user interfaces that blend thoughtful design with robust engineering.`
 
   useEffect(() => {
-    setIsVisible(true)
+    let index = 0
+
+    const typingInterval = setInterval(() => {
+      if (index < descriptionText.length) {
+        // Use charAt to avoid undefined
+        setDisplayedText((prev) => prev + descriptionText.charAt(index))
+        index++
+      } else {
+        clearInterval(typingInterval)
+      }
+    }, 50) // typing speed in ms per character
+
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev)
+    }, 500)
+
+    return () => {
+      clearInterval(typingInterval)
+      clearInterval(cursorInterval)
+    }
   }, [])
 
   const handleDownloadCV = () => {
-    // Create a link to download the CV
     const link = document.createElement("a")
     link.href = "/Copy of Saad Amjad.pdf"
     link.download = "Saad_Amjad_CV.pdf"
@@ -20,7 +41,7 @@ export function Hero() {
   }
 
   const handleGetInTouch = () => {
-    const phoneNumber = "923061975881" // Pakistan country code + number without leading 0
+    const phoneNumber = "923061975881"
     const message = "Hi Saad, I'd like to get in touch regarding your portfolio."
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
@@ -28,18 +49,9 @@ export function Hero() {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}
-        />
-      </div>
-
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Profile Image */}
-        <div className={`flex justify-center lg:justify-end ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+        <div className="flex justify-center lg:justify-end">
           <div className="relative">
             <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
               <img
@@ -55,34 +67,17 @@ export function Hero() {
         </div>
 
         {/* Hero Content */}
-        <div
-          className={`space-y-6 ${isVisible ? "animate-slide-in-left" : "opacity-0"}`}
-          style={{ animationDelay: "0.2s" }}
-        >
+        <div className="space-y-6">
           <div className="space-y-2">
             <h1 className="text-5xl lg:text-6xl font-bold text-balance">Saad Amjad</h1>
             <h2 className="text-2xl lg:text-3xl text-primary font-medium">Frontend Developer</h2>
           </div>
 
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty">
-            I build accessible, pixel-perfect digital experiences for the web. Passionate about crafting user interfaces
-            that blend thoughtful design with robust engineering.
+          {/* Typewriter Description */}
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+            {displayedText}
+            <span className={`text-primary font-bold ${showCursor ? "opacity-100" : "opacity-0"}`}>|</span>
           </p>
-
-          <div className="space-y-2 text-sm text-muted-foreground">
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4" />
-              <span>saadamjad558@gmail.com</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4" />
-              <span>03061975881</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MapPin className="w-4 h-4" />
-              <span>Vehari, Pakistan</span>
-            </div>
-          </div>
 
           <div className="flex flex-wrap gap-4">
             <Button onClick={handleDownloadCV} className="group">

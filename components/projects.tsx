@@ -36,23 +36,23 @@ const projects = [
   },
   {
     title: "Add to Cart",
-description:
-  "A modern, responsive fashion e-commerce feature that lets users browse dresses, view details, and seamlessly add items to the cart with smooth animations.",
-image: "/modern-portfolio-website.png",
-technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Stripe"],
-liveUrl: "https://example.com/shop",
-githubUrl: "https://github.com/saadamjad/add-to-cart",
+    description:
+      "A modern, responsive fashion e-commerce feature that lets users browse dresses, view details, and seamlessly add items to the cart with smooth animations.",
+    image: "/modern-portfolio-website.png",
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Stripe"],
+    liveUrl: "https://example.com/shop",
+    githubUrl: "https://github.com/saadamjad/add-to-cart",
 
   },
   {
-  title: "Structural Chemistry Insights",
-  description:
-    "A responsive frontend page showcasing Data Software and Insights. Join thousands of scientists leveraging CSD data and CCDC software to propel structural science forward.",
-  image: "/sss.png",
-  technologies: ["React", "Tailwind CSS", "Framer Motion"],
-  liveUrl: "https://example.com/structural-chemistry",
-  githubUrl: "https://github.com/saadamjad/structural-chemistry-insights",
-}
+    title: "Structural Chemistry Insights",
+    description:
+      "A responsive frontend page showcasing Data Software and Insights. Join thousands of scientists leveraging CSD data and CCDC software to propel structural science forward.",
+    image: "/sss.png",
+    technologies: ["React", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://example.com/structural-chemistry",
+    githubUrl: "https://github.com/saadamjad/structural-chemistry-insights",
+  }
 
 ]
 
@@ -109,38 +109,42 @@ export function Projects() {
                     </Badge>
                   ))}
                 </div>
-                
-                <div className="flex space-x-4 pt-2">
-  <Button variant="outline" size="sm" onClick={() => setPreviewImg(project.image)}>
-    Preview
-  </Button>
-  {/* You can add your other buttons here if you want */}
-</div>
+
+                <div className="flex justify-end items-center pt-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setPreviewImg(project.image)}
+                    className="ml-auto bg-blue-600 text-white hover:bg-blue-700 border-blue-600 hover:border-blue-700 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-400 dark:border-blue-500 dark:hover:border-blue-400"
+                  >
+                    Preview
+                  </Button>
+                </div>
 
               </div>
             </Card>
           ))}
         </div>
       </div>
-     {previewImg && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
-    onClick={() => setPreviewImg(null)}
-  >
-    <div
-      className="bg-white rounded-lg p-4 max-w-2xl w-full relative max-h-[80vh] overflow-auto"
-      onClick={e => e.stopPropagation()}
-    >
-      <button
-        className="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl"
-        onClick={() => setPreviewImg(null)}
-      >
-        &times;
-      </button>
-      <img src={previewImg} alt="Project Preview" className="w-full h-auto rounded" />
-    </div>
-  </div>
-)}
+      {previewImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          onClick={() => setPreviewImg(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-4 max-w-2xl w-full relative max-h-[80vh] overflow-auto"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl"
+              onClick={() => setPreviewImg(null)}
+            >
+              &times;
+            </button>
+            <img src={previewImg} alt="Project Preview" className="w-full h-auto rounded" />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

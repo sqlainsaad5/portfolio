@@ -68,7 +68,11 @@ export function Education() {
                       {edu.hasVerification && (
                         <Dialog open={isVerificationOpen} onOpenChange={setIsVerificationOpen}>
                           <DialogTrigger asChild>
-                            <Button variant="outline" size="sm" className="text-xs bg-transparent">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="text-xs bg-green-600 text-white hover:bg-green-700 border-green-600 hover:border-green-700 dark:bg-green-500 dark:text-white dark:hover:bg-green-400 dark:border-green-500 dark:hover:border-green-400"
+                            >
                               <Shield className="w-3 h-3 mr-1" />
                               Verify
                             </Button>

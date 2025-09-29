@@ -101,14 +101,17 @@ export function Certifications() {
 
                   <p className="text-sm text-muted-foreground leading-relaxed">{cert.description}</p>
 
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setOpenImage(cert.image)}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Verify Certificate
-                  </Button>
+                  <div className="flex justify-center">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setOpenImage(cert.image)}
+                      className="bg-green-600 text-white hover:bg-green-700 border-green-600 hover:border-green-700 dark:bg-green-500 dark:text-white dark:hover:bg-green-400 dark:border-green-500 dark:hover:border-green-400"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Verify Certificate
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Card>
