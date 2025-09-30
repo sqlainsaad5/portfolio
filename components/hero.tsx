@@ -8,7 +8,7 @@ export function Hero() {
   const [displayedText, setDisplayedText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
 
-  const descriptionText = `I  build accessible, pixel-perfect digital experiences for the web. Passionate about crafting user interfaces that blend thoughtful design with robust engineering.`
+  const descriptionText = `Frontend Developer with experience in UI/UX and web applications. Skilled in modern frontend frameworks, responsive design, and backend development, I build intuitive, high-performing interfaces and deliver digital solutions that meet business goals.`
 
   useEffect(() => {
     let index = 0
