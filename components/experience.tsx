@@ -15,7 +15,7 @@ import { Shield } from "lucide-react"
 
 const experiences = [
   {
-    period: "2023 — Present",
+    period: "Jan 2023 —Oct 2025",
     title: "Senior Frontend Engineer",
     company: "Sirovista",
     description:
