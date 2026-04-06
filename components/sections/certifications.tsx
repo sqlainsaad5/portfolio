@@ -69,7 +69,7 @@ export function Certifications() {
   }, [])
 
   return (
-    <section id="certifications" ref={sectionRef} className="py-20 px-4">
+    <section id="certifications" ref={sectionRef} className="scroll-mt-24 px-4 py-20">
       <div className="max-w-4xl mx-auto">
         <div className="animate-on-scroll">
           <h2 className="text-3xl font-bold mb-12 text-center">Certifications</h2>

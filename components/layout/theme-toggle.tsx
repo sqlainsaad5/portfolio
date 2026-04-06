@@ -20,8 +20,9 @@ export function ThemeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="fixed top-8 right-8 z-50 bg-card/80 backdrop-blur-sm border-border/50"
+      className="border-border/60 bg-card/80 backdrop-blur-sm"
       onClick={() => setIsDark(!isDark)}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </Button>

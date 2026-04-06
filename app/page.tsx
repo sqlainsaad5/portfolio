@@ -1,20 +1,20 @@
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Experience } from "@/components/experience"
-import { Education } from "@/components/education"
-import { Skills } from "@/components/skills"
-import { Projects } from "@/components/projects"
-import { Certifications } from "@/components/certifications"
-import { Contact } from "@/components/contact"
-import { Navigation } from "@/components/navigation"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Hero } from "@/components/sections/hero"
+import { About } from "@/components/sections/about"
+import { Experience } from "@/components/sections/experience"
+import { Education } from "@/components/sections/education"
+import { Skills } from "@/components/sections/skills"
+import { Projects } from "@/components/sections/projects"
+import { Certifications } from "@/components/sections/certifications"
+import { Contact } from "@/components/sections/contact"
+import { Navigation } from "@/components/layout/navigation"
+import { PageBackground } from "@/components/layout/page-background"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen">
+      <PageBackground />
       <Navigation />
-      <ThemeToggle />
-      <main>
+      <main className="relative pt-14 sm:pt-16">
         <Hero />
         <About />
         <Experience />
