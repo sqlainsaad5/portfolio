@@ -102,7 +102,7 @@ export function Contact() {
         </div>
 
         <div className="text-center mt-12 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-          <p className="text-muted-foreground text-sm">© 2025 Saad Amjad. Built with Next.js and Tailwind CSS.</p>
+          <p className="text-muted-foreground text-sm">© 2026 Saad Amjad. Built with Next.js and Tailwind CSS.</p>
         </div>
       </div>
     </section>
