@@ -15,4 +15,6 @@ export type Project = {
   liveUrl?: string | null
   demoVideoUrl?: string | null
   order: number
+  /** Client / commission credit shown on cards */
+  client?: string
 }

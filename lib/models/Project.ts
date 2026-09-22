@@ -14,6 +14,7 @@ const projectSchema = new Schema<ProjectType>(
     liveUrl: { type: String, default: null },
     demoVideoUrl: { type: String, default: null },
     order: { type: Number, required: true },
+    client: { type: String },
   },
   { timestamps: true },
 )

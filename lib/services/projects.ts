@@ -14,6 +14,7 @@ function toPlain(p: Record<string, unknown>): Project {
     liveUrl: p.liveUrl != null ? String(p.liveUrl) : null,
     demoVideoUrl: p.demoVideoUrl != null ? String(p.demoVideoUrl) : null,
     order: Number(p.order),
+    client: p.client ? String(p.client) : undefined,
   }
 }
 

@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { ExternalLink, Github, MonitorPlay } from "lucide-react"
+import { ExternalLink, Github, MonitorPlay, User } from "lucide-react"
 import { ProjectCover } from "@/components/projects/project-cover"
 import type { Project } from "@/lib/types/project"
 import { getYoutubeId } from "@/lib/youtube"
@@ -36,10 +36,18 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
           "border-border/80 bg-background/95 backdrop-blur-xl",
         )}
       >
-        <ProjectCover title={project.title} category={project.category} variant="dialog" />
+        <div className="group">
+          <ProjectCover
+            title={project.title}
+            category={project.category}
+            slug={project.slug}
+            client={project.client}
+            variant="dialog"
+          />
+        </div>
 
-        <ScrollArea className="max-h-[min(55vh,420px)]">
-          <div className="space-y-4 px-6 pb-6 pt-2">
+        <ScrollArea className="max-h-[min(55vh,440px)]">
+          <div className="space-y-4 px-6 pb-6 pt-3">
             <DialogHeader className="space-y-2 text-left">
               <DialogTitle className="pr-8 text-xl font-semibold tracking-tight">{project.title}</DialogTitle>
               <DialogDescription className="text-base leading-relaxed text-muted-foreground">
@@ -47,17 +55,26 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
               </DialogDescription>
             </DialogHeader>
 
+            {project.client ? (
+              <div className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-sm text-foreground">
+                <User className="h-4 w-4 text-primary" />
+                <span>
+                  Built for <span className="font-medium text-primary">{project.client}</span>
+                </span>
+              </div>
+            ) : null}
+
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((t) => (
-                <Badge key={t} variant="secondary">
+                <Badge key={t} variant="secondary" className="border border-border/50">
                   {t}
                 </Badge>
               ))}
             </div>
 
             {project.mernNote ? (
-              <div className="rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-relaxed text-foreground">
-                <span className="font-medium text-primary">MERN / API note — </span>
+              <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-relaxed text-foreground">
+                <span className="font-medium text-primary">Stack note — </span>
                 {project.mernNote}
               </div>
             ) : null}
@@ -74,7 +91,7 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
                     <MonitorPlay className="h-4 w-4" />
                     Video demo
                   </div>
-                  <div className="aspect-video overflow-hidden rounded-md border bg-black shadow-inner">
+                  <div className="aspect-video overflow-hidden rounded-xl border bg-black shadow-inner">
                     <iframe
                       title={`${project.title} demo`}
                       src={`https://www.youtube.com/embed/${yt}`}
@@ -88,7 +105,7 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
             ) : null}
 
             <div className="flex flex-wrap gap-2 pt-2">
-              <Button asChild>
+              <Button asChild className="shadow-sm shadow-primary/15">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="gap-2">
                   <Github className="h-4 w-4" />
                   View repository

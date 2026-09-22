@@ -44,7 +44,7 @@ export function Skills() {
 
   return (
     <section id="skills" ref={sectionRef} className="scroll-mt-24 px-4 py-20">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -55,14 +55,13 @@ export function Skills() {
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">Expertise</p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Skills & technologies</h2>
           <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-            MERN-focused stack with measurable emphasis — bars are illustrative; swap values in{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5 text-xs">lib/data/skills.ts</code>.
+            Full-stack toolkit across MERN, Next.js, Flask, PHP, and delivery tooling — chart values are relative.
           </p>
         </motion.div>
 
         <Card className="animate-on-scroll mb-10 overflow-hidden border-border/60 bg-card/50 p-4 shadow-sm backdrop-blur-sm sm:p-6">
           <h3 className="mb-4 text-center text-sm font-semibold text-muted-foreground">Stack depth (relative)</h3>
-          <div className="h-[280px] w-full min-w-0">
+          <div className="h-[360px] w-full min-w-0 sm:h-[400px]">
             {chartReady ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
@@ -105,7 +104,7 @@ export function Skills() {
           </div>
         </Card>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, index) => (
             <Card
               key={category.category}
