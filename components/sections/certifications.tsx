@@ -75,7 +75,7 @@ export function Certifications() {
           <h2 className="mb-8 text-center text-2xl font-bold sm:mb-12 sm:text-3xl">Certifications</h2>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-4 sm:gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 items-stretch gap-4 sm:gap-6 lg:grid-cols-3">
           {certifications.map((cert, index) => (
             <Card
               key={index}
