@@ -69,74 +69,78 @@ export function Certifications() {
   }, [])
 
   return (
-    <section id="certifications" ref={sectionRef} className="scroll-mt-24 px-4 py-20">
-      <div className="max-w-4xl mx-auto">
+    <section id="certifications" ref={sectionRef} className="scroll-mt-24 px-4 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl">
         <div className="animate-on-scroll">
-          <h2 className="text-3xl font-bold mb-12 text-center">Certifications</h2>
+          <h2 className="mb-8 text-center text-2xl font-bold sm:mb-12 sm:text-3xl">Certifications</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 items-stretch gap-4 sm:gap-6 md:grid-cols-3">
           {certifications.map((cert, index) => (
             <Card
               key={index}
-              className="p-6 animate-on-scroll hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur-sm border-border/50 group hover:border-primary/20"
+              className="flex h-full flex-col gap-0 p-4 animate-on-scroll hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur-sm border-border/50 group hover:border-primary/20 sm:p-5"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <Award className="w-8 h-8 text-primary" />
+              <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
+                <div className="shrink-0">
+                  <Award className="h-7 w-7 text-primary sm:h-8 sm:w-8" />
                 </div>
-                <div className="flex-1 space-y-3">
+                <div className="min-w-0 flex-1 space-y-2.5 sm:space-y-3">
                   <div>
-                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{cert.title}</h3>
-                    <p className="text-muted-foreground">{cert.issuer}</p>
+                    <h3 className="text-base font-semibold leading-snug break-words group-hover:text-primary transition-colors sm:text-lg">
+                      {cert.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground break-words">{cert.issuer}</p>
                   </div>
 
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Badge variant="outline" className="text-xs">
                       {cert.date}
                     </Badge>
-                    <span className="text-xs text-muted-foreground">ID: {cert.credentialId}</span>
+                    <span className="text-xs text-muted-foreground break-all">ID: {cert.credentialId}</span>
                   </div>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">{cert.description}</p>
-
-                  <div className="flex justify-center">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setOpenImage(cert.image)}
-                      className="bg-green-600 text-white hover:bg-green-700 border-green-600 hover:border-green-700 dark:bg-green-500 dark:text-white dark:hover:bg-green-400 dark:border-green-500 dark:hover:border-green-400"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Verify Certificate
-                    </Button>
-                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{cert.description}</p>
                 </div>
+              </div>
+
+              <div className="mt-auto pt-4 sm:pt-5">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setOpenImage(cert.image)}
+                  className="h-10 w-full bg-green-600 text-white hover:bg-green-700 border-green-600 hover:border-green-700 dark:bg-green-500 dark:text-white dark:hover:bg-green-400 dark:border-green-500 dark:hover:border-green-400"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4 shrink-0" />
+                  Verify Certificate
+                </Button>
               </div>
             </Card>
           ))}
         </div>
       </div>
-      {openImage && (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-    onClick={() => setOpenImage(null)}
-  >
-    <div
-      className="bg-white rounded-lg p-4 max-w-lg w-full relative"
-      onClick={e => e.stopPropagation()}
-    >
-      <button
-        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-        onClick={() => setOpenImage(null)}
-      >
-        ×
-      </button>
-      <img src={openImage} alt="Certificate" className="w-full h-auto rounded" />
-    </div>
-  </div>
-)}
+      {openImage ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setOpenImage(null)}
+        >
+          <div
+            className="relative w-full max-w-lg max-h-[90dvh] overflow-auto rounded-lg bg-white p-3 sm:p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-md text-2xl leading-none text-gray-500 hover:text-gray-700"
+              onClick={() => setOpenImage(null)}
+              aria-label="Close certificate"
+            >
+              ×
+            </button>
+            <img src={openImage} alt="Certificate" className="mt-6 h-auto w-full rounded" />
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }

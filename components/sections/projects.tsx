@@ -7,7 +7,9 @@ import { ProjectDetailDialog } from "@/components/projects/project-detail-dialog
 import { cn } from "@/lib/utils"
 import type { Project, ProjectCategory } from "@/lib/types/project"
 import { getProjectsSorted } from "@/lib/data/projects"
-import { Loader2 } from "lucide-react"
+import { ChevronDown, ChevronUp, Loader2 } from "lucide-react"
+
+const INITIAL_VISIBLE = 8
 
 const filters: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "all", label: "All" },
@@ -22,6 +24,7 @@ export function Projects() {
   const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("all")
   const [active, setActive] = useState<Project | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [expanded, setExpanded] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -48,6 +51,14 @@ export function Projects() {
     if (filter === "all") return list
     return list.filter((p) => p.category === filter)
   }, [list, filter])
+
+  const shown = expanded ? visible : visible.slice(0, INITIAL_VISIBLE)
+  const hasMore = visible.length > INITIAL_VISIBLE
+
+  const setFilterAndCollapse = (id: (typeof filters)[number]["id"]) => {
+    setFilter(id)
+    setExpanded(false)
+  }
 
   const openDetails = (p: Project) => {
     setActive(p)
@@ -91,7 +102,7 @@ export function Projects() {
                 type="button"
                 role="tab"
                 aria-selected={filter === f.id}
-                onClick={() => setFilter(f.id)}
+                onClick={() => setFilterAndCollapse(f.id)}
                 className={cn(
                   "rounded-lg px-3.5 py-1.5 text-sm font-medium transition-all duration-200",
                   filter === f.id
@@ -119,12 +130,42 @@ export function Projects() {
               transition={{ duration: 0.2 }}
               className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-4"
             >
-              {visible.map((project, index) => (
+              {shown.map((project, index) => (
                 <ProjectCard key={project.slug} project={project} index={index} onDetails={openDetails} />
               ))}
             </motion.div>
           </AnimatePresence>
         )}
+
+        {!loading && hasMore ? (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => {
+                setExpanded((prev) => {
+                  if (prev) {
+                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" })
+                  }
+                  return !prev
+                })
+              }}
+              aria-expanded={expanded}
+              className="inline-flex items-center gap-2 rounded-xl border border-border/70 bg-muted/40 px-5 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-200 hover:border-primary/40 hover:bg-muted/70"
+            >
+              {expanded ? (
+                <>
+                  Show less
+                  <ChevronUp className="h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  See more
+                  <ChevronDown className="h-4 w-4" />
+                </>
+              )}
+            </button>
+          </div>
+        ) : null}
 
         {!loading && visible.length === 0 ? (
           <p className="py-12 text-center text-muted-foreground">No projects in this category yet.</p>
