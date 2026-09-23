@@ -11,11 +11,11 @@ const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
   { name: "Skills", href: "#skills" },
+  { name: "Clients", href: "#client-work" },
   { name: "Projects", href: "#projects" },
-  { name: "Certifications", href: "#certifications" },
   { name: "Feedback", href: "#feedback" },
+  { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ]
 

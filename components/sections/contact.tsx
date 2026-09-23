@@ -32,8 +32,7 @@ export function Contact() {
         <div className="animate-on-scroll">
           <h2 className="text-3xl font-bold mb-8 text-center">Get In Touch</h2>
           <p className="text-center text-muted-foreground mb-12 text-pretty">
-            I'm always interested in new opportunities and exciting projects. Whether you have a question or just want
-            to say hi, feel free to reach out!
+            Open for freelance and full-time opportunities. Prefer WhatsApp for a fast reply — usually within 24 hours.
           </p>
         </div>
 
@@ -102,7 +101,9 @@ export function Contact() {
         </div>
 
         <div className="text-center mt-12 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-          <p className="text-muted-foreground text-sm">© 2026 Saad Amjad. Built with Next.js and Tailwind CSS.</p>
+          <p className="text-muted-foreground text-sm">
+            © 2026 Saad Amjad. Full-stack developer — open to web apps, APIs, dashboards, and end-to-end product work.
+          </p>
         </div>
       </div>
     </section>

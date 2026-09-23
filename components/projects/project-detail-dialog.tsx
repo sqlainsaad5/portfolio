@@ -27,6 +27,7 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
   if (!project) return null
 
   const yt = project.demoVideoUrl ? getYoutubeId(project.demoVideoUrl) : null
+  const cs = project.caseStudy
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -55,12 +56,21 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
               </DialogDescription>
             </DialogHeader>
 
-            {project.client ? (
-              <div className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-sm text-foreground">
-                <User className="h-4 w-4 text-primary" />
-                <span>
-                  Built for <span className="font-medium text-primary">{project.client}</span>
-                </span>
+            {project.client || cs?.role ? (
+              <div className="flex flex-wrap gap-2">
+                {project.client ? (
+                  <div className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-sm text-foreground">
+                    <User className="h-4 w-4 text-primary" />
+                    <span>
+                      Built for <span className="font-medium text-primary">{project.client}</span>
+                    </span>
+                  </div>
+                ) : null}
+                {cs?.role ? (
+                  <Badge variant="secondary" className="border border-border/50 px-3 py-2 text-sm font-normal">
+                    Role: {cs.role}
+                  </Badge>
+                ) : null}
               </div>
             ) : null}
 
@@ -71,6 +81,40 @@ export function ProjectDetailDialog({ project, open, onOpenChange }: Props) {
                 </Badge>
               ))}
             </div>
+
+            {cs?.metrics && cs.metrics.length > 0 ? (
+              <div className="grid grid-cols-3 gap-2">
+                {cs.metrics.map((m) => (
+                  <div
+                    key={m.label}
+                    className="rounded-xl border border-border/60 bg-muted/30 px-3 py-2.5 text-center"
+                  >
+                    <p className="text-sm font-semibold text-primary">{m.value}</p>
+                    <p className="mt-0.5 text-[11px] uppercase tracking-wide text-muted-foreground">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            {cs ? (
+              <div className="space-y-3">
+                {(
+                  [
+                    { label: "Problem", text: cs.problem },
+                    { label: "Approach", text: cs.approach },
+                    { label: "Result", text: cs.result },
+                  ] as const
+                ).map((block) => (
+                  <div
+                    key={block.label}
+                    className="rounded-xl border border-border/50 bg-card/40 px-4 py-3"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wider text-primary">{block.label}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{block.text}</p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
 
             {project.mernNote ? (
               <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-relaxed text-foreground">

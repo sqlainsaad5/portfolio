@@ -19,6 +19,20 @@ export const projects: Project[] = [
     demoVideoUrl: null,
     order: 1,
     client: "Muhammad Kaif",
+    caseStudy: {
+      role: "Full-stack (MERN)",
+      problem:
+        "Athletes, coaches, and venue owners needed one place for booking, training, and equipment — not scattered WhatsApp threads.",
+      approach:
+        "Designed JWT + RBAC APIs on Express/MongoDB, then a React SPA for player, coach, and admin flows with booking quotas and marketplace listings.",
+      result:
+        "A deployable split frontend/API platform covering coaching, indoor grounds, performance tracking, and commerce.",
+      metrics: [
+        { label: "Roles", value: "3+" },
+        { label: "Domains", value: "4 modules" },
+        { label: "Auth", value: "JWT + RBAC" },
+      ],
+    },
   },
   {
     slug: "eventify",
@@ -35,6 +49,20 @@ export const projects: Project[] = [
     demoVideoUrl: null,
     order: 2,
     client: "Anam Riaz",
+    caseStudy: {
+      role: "Full-stack (Next.js + Flask)",
+      problem:
+        "Organizers struggled to coordinate vendors, bookings, and payments across disconnected tools.",
+      approach:
+        "Built organizer/vendor dashboards in Next.js with Redux Toolkit, Flask APIs, Stripe, Google OAuth, and an OpenAI-assisted chatbot.",
+      result:
+        "A unified event ops surface for planning, vendor workflows, and financial orchestration.",
+      metrics: [
+        { label: "Payments", value: "Stripe" },
+        { label: "Auth", value: "JWT + OAuth" },
+        { label: "AI assist", value: "Chatbot" },
+      ],
+    },
   },
   {
     slug: "oems",
@@ -50,6 +78,20 @@ export const projects: Project[] = [
     demoVideoUrl: null,
     order: 3,
     client: "Muhammad Basit",
+    caseStudy: {
+      role: "Full-stack (PHP + MySQL)",
+      problem:
+        "Institutions needed secure online exams with approvals, timers, and mixed grading — not a simple quiz form.",
+      approach:
+        "Implemented admin/teacher/student RBAC, paper approval pipelines, section timers with auto-save, and PDF/Excel reporting on PHP 8 + MySQL.",
+      result:
+        "Production-ready exam management suitable for departmental mid/final workflows.",
+      metrics: [
+        { label: "Roles", value: "3" },
+        { label: "Grading", value: "MCQ + manual" },
+        { label: "Exports", value: "PDF/Excel" },
+      ],
+    },
   },
   {
     slug: "dr-m-nadeem-sajjad",
@@ -65,6 +107,20 @@ export const projects: Project[] = [
     demoVideoUrl: null,
     order: 4,
     client: "Dr. M. Nadeem Sajjad",
+    caseStudy: {
+      role: "Frontend / Next.js",
+      problem:
+        "A medical professional needed a fast, credible web presence that loads well on mobile.",
+      approach:
+        "Shipped a typed Next.js site focused on clear branding, responsive layout, and Vercel deployment.",
+      result:
+        "A live professional site that makes a strong first impression for visitors.",
+      metrics: [
+        { label: "Stack", value: "Next.js" },
+        { label: "Deploy", value: "Vercel" },
+        { label: "Status", value: "Live" },
+      ],
+    },
   },
   {
     slug: "prescripto",
@@ -81,6 +137,20 @@ export const projects: Project[] = [
     demoVideoUrl: null,
     order: 5,
     client: "Ayesha Nadeem",
+    caseStudy: {
+      role: "Full-stack (MERN)",
+      problem:
+        "Clinics needed dynamic scheduling with separate patient, doctor, and admin experiences.",
+      approach:
+        "Modeled users/appointments in MongoDB, secured Express REST with JWT, and built React dashboards for booking and admin tools.",
+      result:
+        "A healthcare appointment platform ready for real clinic-style flows instead of static forms.",
+      metrics: [
+        { label: "Stack", value: "MERN" },
+        { label: "Auth", value: "JWT" },
+        { label: "Focus", value: "Scheduling" },
+      ],
+    },
   },
   {
     slug: "finance-tracker",

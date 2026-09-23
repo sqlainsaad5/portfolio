@@ -27,15 +27,6 @@ export const testimonials: Testimonial[] = [
     quote: "Exactly what we needed. Fast and clean.",
   },
   {
-    id: "3",
-    name: "Muhammad Basit",
-    role: "Client",
-    project: "OEMS",
-    rating: 5,
-    quote:
-      "آن لائن امتحان والا سسٹم بالکل ہمارے SRS کے مطابق بنا۔ ٹیچر پیپر بھیجتے ہیں، ایڈمن اپروو کرتا ہے، سٹوڈنٹ کا ٹائمر اور آٹو سیو بھی ٹھیک چل رہا ہے۔ رپورٹس PDF میں مل جاتی ہیں۔ بہت شکریہ — اگلے سمسٹر بھی اسی پر چلیں گے۔",
-  },
-  {
     id: "4",
     name: "Dr. M. Nadeem Sajjad",
     role: "Client",

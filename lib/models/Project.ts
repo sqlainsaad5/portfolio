@@ -15,6 +15,13 @@ const projectSchema = new Schema<ProjectType>(
     demoVideoUrl: { type: String, default: null },
     order: { type: Number, required: true },
     client: { type: String },
+    caseStudy: {
+      problem: String,
+      approach: String,
+      result: String,
+      role: String,
+      metrics: [{ label: String, value: String }],
+    },
   },
   { timestamps: true },
 )
